@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import Characters from './components/characters/characters'
+import Character from './components/characters/character'
 import Login from './components/login/login'
 
 function App() {
@@ -22,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/characters">
             <Characters/>
+          </Route>
+          <Route path="/character/:id">
+            <Character/>
           </Route>
           <Route path="/">
             <Login/>
