@@ -12,7 +12,7 @@
 /build
 
 #sercret
-src/component/sercret
+/sercret
 
 # misc
 .DS_Store
