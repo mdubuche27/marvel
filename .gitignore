@@ -11,6 +11,9 @@
 # production
 /build
 
+#sercret
+src/component/sercret
+
 # misc
 .DS_Store
 .env.local
