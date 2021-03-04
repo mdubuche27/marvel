@@ -34,11 +34,22 @@ const Character = () => {
       })
   }, [id])
 
-  return (
-    <div>
-        <p>{characters[0].name}</p>
-    </div>
-  )
+  if (characters[0] !== undefined){
+    return (
+        <div>
+            <p>ID : {characters[0].id}</p>
+            <p>Name : {characters[0].name}</p>
+            <p>Desc : {characters[0].description}</p>
+        </div>
+      )
+  }
+  else{
+      return(
+          <div>
+              <p>chargement...</p>
+          </div>
+      )
+  }
 }
 
 export default Character

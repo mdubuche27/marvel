@@ -1,8 +1,10 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import './App.css';
 import Characters from './components/characters/characters'
 import Character from './components/characters/character'
 import Login from './components/login/login'
+import PrivateRoute from './components/utils/privatroutes'
+import PublicRoute from './components/utils/publicroute'
 
 function App() {
   return (
@@ -20,15 +22,18 @@ function App() {
         </nav>
 
         <Switch>
-          <Route path="/characters">
+          <PrivateRoute path="/characters">
             <Characters/>
-          </Route>
-          <Route path="/character/:id">
+          </PrivateRoute>
+          <PrivateRoute path="/character/:id">
             <Character/>
-          </Route>
-          <Route path="/">
+          </PrivateRoute>
+          <PublicRoute path="/">
             <Login/>
-          </Route>
+          </PublicRoute>
+          <Redirect path="/">
+            <Login/>
+          </Redirect>
         </Switch>
       </div>
     </Router>
