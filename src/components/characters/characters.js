@@ -38,11 +38,28 @@ const Characters = () => {
       })
   }, [currentPage])
 
+  const handleFavorite = (hero) => {
+    //localStorage.removeItem('Favorite')
+    const currentFavorite = localStorage.getItem('Favorite') ? JSON.parse(localStorage.getItem('Favorite')) : []
+    const isPresent = currentFavorite.map(f => f.id).indexOf(hero.id)
+    if(isPresent === -1){
+      currentFavorite.push(hero)
+    }
+    else{
+      currentFavorite.splice(isPresent, 1);
+    }
+    localStorage.setItem('Favorite', JSON.stringify(currentFavorite))
+    console.log(localStorage.getItem('Favorite'))
+  }
+
   return (
     <div>
       <p>Marvel characters</p>
       {characters.map(character => (
-        <Link to={"/character/" + character.id}>{character.name}</Link>
+        <div>
+          <Link to={"/character/" + character.id}>{character.name}</Link>
+          <button onClick={() => handleFavorite({id: character.id, name: character.name})}>Add to favorite</button>
+        </div>
       ))}
         <Pagination
           total={total}

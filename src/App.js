@@ -5,6 +5,7 @@ import Character from './components/characters/character'
 import Login from './components/login/login'
 import PrivateRoute from './components/utils/privatroutes'
 import PublicRoute from './components/utils/publicroute'
+import Favorite from './components/characters/favorite'
 
 function App() {
   return (
@@ -18,12 +19,18 @@ function App() {
             <li>
               <Link to="/characters">Characters</Link>
             </li>
+            <li>
+              <Link to="/characters/favorite">Favoris</Link>
+            </li>
           </ul>
         </nav>
 
         <Switch>
-          <PrivateRoute path="/characters">
+          <PrivateRoute exact path="/characters">
             <Characters/>
+          </PrivateRoute>
+          <PrivateRoute path="/characters/favorite">
+            <Favorite/>
           </PrivateRoute>
           <PrivateRoute path="/character/:id">
             <Character/>
